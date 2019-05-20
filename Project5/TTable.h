@@ -47,8 +47,11 @@ public:
 	void Print() {
 		for (Reset(); !IsTabEnded(); GoNext())
 		{
-			cout << "***" << endl;
-			///cout << GetCurr().key << "  -  " << GetCurr().val << endl;
+			PTDatValue pp = GetValuePTR();
+			int *pi = (int*)pp;
+			//cout << "***" << endl;
+
+			cout << GetKey()<< "  -  " << *pi << endl;
 		}
 	}
 

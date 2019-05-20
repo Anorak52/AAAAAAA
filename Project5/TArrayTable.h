@@ -1,3 +1,5 @@
+#ifndef _TARRAYTABLE_H
+#define _TARRAYTABLE_H
 #define TabMaxSize 25
 #include <string>
 #include "TDatValue.h"
@@ -54,3 +56,5 @@ public:
 	friend class TSortTable;
 	friend class TTabRecord;
 };
+
+#endif

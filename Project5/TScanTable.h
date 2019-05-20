@@ -1,3 +1,5 @@
+#ifndef _TSCANTABLE_H
+#define _TSCANTABLE_H
 #include "TTabRecord.h"
 
 #include "TArrayTable.h"
@@ -14,7 +16,7 @@ public:
 			Efficiency++;
 			if (mas[i]->GetKey() == _key) {
 				CurrPos = i;
-				return mas[i]->GetValuePTR;
+				return mas[i]->GetValuePTR();
 			}
 		}
 		CurrPos = DataCount;
@@ -26,13 +28,13 @@ public:
 		//virtual void Insert(TRecord rec) {
 		if (IsFull()) return;
 		if (!FindRecord(k)) {
-			mas[CurrPos] = new TTabRecord(k, NULL);
+			mas[CurrPos] = new TTabRecord(k, pVal);
 			DataCount++;
 			Efficiency++;
 		}
 		else
 		{
-			mas[CurrPos]->GetValuePTR->val++;
+			mas[CurrPos]->GetValuePTR();// val++;
 		}
 	}
 
@@ -44,3 +46,5 @@ public:
 		}
 	}
 };
+
+#endif

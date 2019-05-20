@@ -22,7 +22,7 @@ public: // методы
 	PTDatValue GetValuePTR(void) { return pValue; } // получить указатель на данные
 	virtual TDatValue * GetCopy() // изготовить копию
 	{
-		TDatValue* temp = (PTDatValue)new TTabRecord(Key, pValue);
+		TDatValue* temp = new TTabRecord(Key, pValue);
 		return temp;
 	}
 	TTabRecord & operator = (TTabRecord &tr)// присваивание
@@ -34,7 +34,7 @@ public: // методы
 	virtual int operator < (const TTabRecord &tr) { return Key > tr.Key; } // сравнение А<њ
 	virtual int operator > (const TTabRecord &tr) { return Key < tr.Key; } // сравнение А>њ
 protected:
-	virtual void Print(ostream& os) { os << Key << " " << pValue; }
+	virtual void Print(ostream& os) { os << Key << " " << *((int*)pValue); /*должно быть разименование*/}
 	//дружественные классы дл§ различных типов таблиц, см. далее
 	friend class TArrayTable;
 	friend class TScanTable;

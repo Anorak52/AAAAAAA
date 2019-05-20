@@ -18,12 +18,14 @@ int main()
 
 	TScanTable A(1000), TMP(1000);
 	int eff = 0;
+	string word[10]={"111","123","aaaa"};
+	int array[10] = { 1,2,3,1,2,4,2,5,1,2 };
 	PTDatValue p = (PTDatValue)&eff;
 	//TRecord rec;
 	//TMP.Read("Text.txt");
 	//A.Read("Text.txt");
-	A.InsRecord("111", p);
-	A.InsRecord("222", p);
+	A.InsRecord(word[2], (PTDatValue)&array[0]);
+	A.InsRecord("222", (PTDatValue)&array[1]);
 	eff = A.GetEfficiency();
 
 	cout << "ScanTable:" << endl << endl;
@@ -53,5 +55,7 @@ int main()
 	A.Print();
 
 	cout << endl;
+	int zzz;
+	cin >> zzz;
 	//break;
 }
