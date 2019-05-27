@@ -3,13 +3,7 @@
 
 TSortTable::TSortTable(const TScanTable & tab)
 {
-	
-		TabSize = tab.GetTabSize();
-		mas = new [MaxSize];
-		for (int i = 0; i < DataCount; i++) {
-			mas[i] = tab.GetMas(i);
-		}
-		InsertSort();
+	*this = tab;
 
 }
 

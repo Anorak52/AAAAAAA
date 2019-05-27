@@ -43,7 +43,7 @@ public:
 	virtual int GoNext(void) = 0; // переход к следующей записи
 	// (=1 после применения для последней записи таблицы)
 	//virtual TRecord GetCurr() const = 0;
-
+	virtual int GetCurrPos() = 0;
 	void Print() {
 		for (Reset(); !IsTabEnded(); GoNext())
 		{
@@ -51,7 +51,7 @@ public:
 			int *pi = (int*)pp;
 			//cout << "***" << endl;
 
-			cout << GetKey()<< "  -  " << *pi << endl;
+			cout << GetCurrPos() << ": "<<GetKey()<< "  -  " << *pi << endl;
 		}
 	}
 

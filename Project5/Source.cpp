@@ -5,7 +5,7 @@
 #include "TArrayTable.h"
 #include "TScanTable.h"
 #include "TSortTable.h"
-
+#include "TArrayHash.h"
 
 #include "Math.h"
 #include "stdlib.h"
@@ -19,7 +19,7 @@ int main()
 	string word[10] = { "111","123","aaaa","fd","14", "xg", "10", "uysf", "15447", "hxhff" };
 	int array[10] = { 1,2,3,1,2,4,2,5,1,2 };
 	TSortTable B(100);
-
+	TArrayHash A(100);
 	TScanTable TMP(100);
 	cout << "scan"<<TMP.GetTabSize();
 	//cout << "sort"<<B.GetTabSize();
@@ -29,10 +29,11 @@ int main()
 	{
 		B.InsRecord(word[i], (PTDatValue)&array[i]);
 		TMP.InsRecord(word[i], (PTDatValue)&array[i]);
+		A.InsRecord(word[i], (PTDatValue)&array[i]);
 	}
 	//TSortTable B(TMP);
 	int number = 0;
-	while (number != 3)
+	while (number != 4)
 	{
 		cin >> number;
 
@@ -119,6 +120,31 @@ int main()
 		//	cout << "Эффективность поиска =  " << B.GetEfficiency() << endl;
 
 			
+			cout << endl;
+			break;
+		}
+		case 3: {
+			cout << A.GetDataCount();
+			cout << "HashTable:" << endl << endl;
+			A.Print();
+			/*for (A.Reset(); !A.IsTabEnded();A.GoNext())
+			{
+				PTDatValue pp = A.GetValuePTR();
+				int *pi = (int*)pp;
+				//cout << "***" << endl;
+
+				cout << A.GetKey() << "  -  " << *pi << endl;
+			}*/
+			PTDatValue p1 = A.FindRecord("Q");
+			if (p1)
+				cout << "Нашли";
+			else cout << "Не Нашли";
+			cout << "Эффективность поиска =  " << A.GetEfficiency() << endl;
+			p1 = A.FindRecord("111");
+			if (p1)
+				cout << "Нашли";
+			else cout << "Не Нашли";
+			cout << "Эффективность поиска =  " << A.GetEfficiency() << endl;
 			cout << endl;
 			break;
 		}

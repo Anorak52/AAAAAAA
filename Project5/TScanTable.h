@@ -7,6 +7,9 @@
 
 class TScanTable : public TArrayTable {
 public:
+	virtual int GetCurrPos() {
+		return CurrPos;
+	}
 	TScanTable(int Size = TabMaxSize) : TArrayTable(Size) {}//конструктор
 	// основные методы
 

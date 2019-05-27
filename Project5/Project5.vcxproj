@@ -115,15 +115,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="TArrayHash.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TArrayTable.cpp" />
+    <ClCompile Include="THashTable.cpp" />
     <ClCompile Include="TSortTable.cpp" />
     <ClCompile Include="TTabRecord.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TArrayHash.h" />
     <ClInclude Include="TArrayTable.h" />
     <ClInclude Include="TDataCom.h" />
     <ClInclude Include="TDatValue.h" />
+    <ClInclude Include="THashTable.h" />
     <ClInclude Include="TScanTable.h" />
     <ClInclude Include="TSortTable.h" />
     <ClInclude Include="TTable.h" />
