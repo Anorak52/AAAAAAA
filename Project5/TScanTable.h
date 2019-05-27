@@ -12,6 +12,7 @@ public:
 
 	PTDatValue FindRecord(TKey _key)
 	{
+		Efficiency=0;
 		for (int i = 0; i < DataCount; i++) {
 			Efficiency++;
 			if (mas[i]->GetKey() == _key) {

@@ -4,7 +4,7 @@
 #include "TTable.h"
 #include "TArrayTable.h"
 #include "TScanTable.h"
-//#include "TSortTable.h"
+#include "TSortTable.h"
 
 
 #include "Math.h"
@@ -15,47 +15,117 @@ using namespace std;
 
 int main()
 {
-
-	TScanTable A(1000), TMP(1000);
-	int eff = 0;
-	string word[10]={"111","123","aaaa"};
+	setlocale(LC_ALL, "Russian");
+	string word[10] = { "111","123","aaaa","fd","14", "xg", "10", "uysf", "15447", "hxhff" };
 	int array[10] = { 1,2,3,1,2,4,2,5,1,2 };
-	PTDatValue p = (PTDatValue)&eff;
-	//TRecord rec;
-	//TMP.Read("Text.txt");
-	//A.Read("Text.txt");
-	A.InsRecord(word[2], (PTDatValue)&array[0]);
-	A.InsRecord("222", (PTDatValue)&array[1]);
-	eff = A.GetEfficiency();
+	TSortTable B(100);
 
-	cout << "ScanTable:" << endl << endl;
-	A.Print();
+	TScanTable TMP(100);
+	cout << "scan"<<TMP.GetTabSize();
+	//cout << "sort"<<B.GetTabSize();
+	int eff = 0;
 
-	cout << endl;
-	cout << "Ёффективность вставки " << A.GetDataCount() << " записей = " << A.GetEfficiency() << " (в среднем =  " << ((float)A.GetEfficiency() / (float)A.GetDataCount()) << ")" << endl;
-
-	eff = A.GetEfficiency();
-	/*for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		rec = TMP.GetMas((rand() % TMP.GetDataCount()));
-		A.Find(rec.key);
+		B.InsRecord(word[i], (PTDatValue)&array[i]);
+		TMP.InsRecord(word[i], (PTDatValue)&array[i]);
 	}
-	cout << "Ёффективность поиска =  " << ((float)(A.GetEff() - eff) / 100) << endl;
-
-
-	eff = A.GetEff();
-	for (int i = 0; i < 100; i++)
+	//TSortTable B(TMP);
+	int number = 0;
+	while (number != 3)
 	{
-		rec = TMP.GetMas((rand() % TMP.GetDataCount()));
-		A.Delete(rec.key);
-		TMP.Delete(rec.key);
-	}
-	cout << "Ёффективность удалени¤ = " << ((float)(A.GetEff() - eff) / 100) << endl << endl;*/
-	cout << "ScanTable после удалени¤: (осталось " << A.GetDataCount() << " записей)" << endl;
-	A.Print();
+		cin >> number;
 
-	cout << endl;
-	int zzz;
-	cin >> zzz;
-	//break;
+		switch (number)
+		{
+		case 1:
+		{
+
+			int eff = 0;
+			PTDatValue p = (PTDatValue)&eff;
+			//TRecord rec;
+			//TMP.Read("Text.txt");
+			//A.Read("Text.txt");
+
+			//eff = TMP.GetEfficiency();
+			cout << TMP.GetDataCount();
+
+			cout << "ScanTable:" << endl << endl;
+			TMP.Print();
+
+			/*cout << endl;
+			cout << "Эффективность вставки " << TMP.GetDataCount() << " записей = " << TMP.GetEfficiency() << " (в среднем =  " << ((float)TMP.GetEfficiency() / (float)TMP.GetDataCount()) << ")" << endl;
+
+			eff = TMP.GetEfficiency();
+
+			cout << "SortTable: " << endl;
+
+			cout << "ScanTable после удаления: (осталось " << TMP.GetDataCount() << " записей)" << endl;
+			TMP.Print();*/
+			PTDatValue p1 = TMP.FindRecord("Q");
+			if (p1)
+				cout << "Нашли";
+			else cout << "Не Нашли";
+			cout << "Эффективность поиска =  " << TMP.GetEfficiency() << endl;
+			p1 = TMP.FindRecord("111");
+			if (p1)
+				cout << "Нашли";
+			else cout << "Не Нашли";
+			cout << "Эффективность поиска =  " << TMP.GetEfficiency() << endl;
+
+			break; }
+		///////////////////////////////////////////////////////////////
+
+		case 2: {
+			/*TSortTable B(100);
+			TScanTable TMP(100);
+			int eff = 0;
+			string word[10] = { "111","123","aaaa","fd","14", "xg", "10", "uysf", "15447", "hxhff" };
+			int array[10] = { 1,2,3,1,2,4,2,5,1,2 };
+			for (int i = 0; i < 10; i++)
+			{
+				B.InsRecord(word[i], (PTDatValue)&array[i]);
+				TMP.InsRecord(word[i], (PTDatValue)&array[i]);
+			}*/
+			//B.InsRecord("222", (PTDatValue)&array[1]);
+			/*TMP.Read("Text.txt");
+			B.Read("Text.txt");*/
+			//eff = B.GetEfficiency();
+
+			cout << B.GetDataCount();
+
+			cout << "SortTable:" << endl << endl;
+			B.Print();
+
+			cout << endl;
+			//cout << "Эффективности:\n";
+			//cout << "Эффективность вставки " << B.GetDataCount() << " записей = " << B.GetEfficiency() << " (в среднем =  " << ((float)B.GetEfficiency() / (float)B.GetDataCount()) << ")" << endl;
+
+			//eff = B.GetEfficiency();
+			
+			
+			bool p1=	B.Find("q");
+				
+			if (p1)
+				cout << "Нашли";
+			else cout << "Не Нашли";
+			cout << "Эффективность поиска =  " << B.GetEfficiency() << endl;
+			p1 = B.Find("111");
+			if (p1)
+				cout << "Нашли";
+			else cout << "Не Нашли";
+			cout << "Эффективность поиска =  " << B.GetEfficiency() << endl;
+
+		//	cout << "Эффективность поиска =  " << B.GetEfficiency() << endl;
+
+			
+			cout << endl;
+			break;
+		}
+				/*cout << endl;
+				int zzz;
+				cin >> zzz;*/
+				//break;
+		}
+	}
 }
